@@ -123,18 +123,18 @@ public class VariablesTheme {
         System.out.println(row1 + "\n" + row2 + "\n" + row3 + "\n" + row4 + "\n" + row5 );
 
         System.out.print("\n\n №9 Отображение количества сотен, десятков и единиц числа \n");
-        int startNum2 = 123;
-        int hun2 = startNum2 / 100;
-        int ten2 = startNum2 / 10 % 10;
-        int one2 = startNum2 % 100 % 10;
-        System.out.println(" Число: "+ startNum2 + " содержить "+ hun2 + " сотен, "+ ten2 + 
-                " десятков, "+ one2 + " единиц.");
+        int srcNum2 = 123;
+        int hundreds2 = srcNum2 / 100;
+        int tens2 = srcNum2 / 10 % 10;
+        int units2 = srcNum2  % 10;
+        System.out.println(" Число: "+ srcNum2 + " содержить "+ hundreds2 + " сотен, "+ tens2 + 
+                " десятков, "+ units2 + " единиц.");
 
         System.out.print("\n\n №10 Преобразование секунд \n");
-        int allsec = 86399;
-        int min = allsec / 60 % 60;
-        int sec = allsec % 60;
-        int hou = allsec / 3600;
-        System.out.println(" " + hou +":" + min +":"+ sec);
+        int totalsec = 86399;
+        int min = totalsec / 60 % 60;
+        int sec = totalsec % 60;
+        int hours = totalsec / 3600;
+        System.out.println(" " + hours +":" + min +":"+ sec);
     }
 }
