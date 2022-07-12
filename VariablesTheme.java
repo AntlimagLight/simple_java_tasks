@@ -10,16 +10,16 @@ public class VariablesTheme {
         boolean processing = true;
         char os ='W';
         System.out.print(" Система:" + os +"\n Разрядность:"+ systemBitDepth + 
-        "\n Работоспособность:" + processing +"\n Кол-во ядер:"+ cores + 
-        "\n Скорость процессора(ггц):"+ ghz + "\n Оперативка(мб):"+ ram +"\n Питание(квт):"+ power 
-        +"\n Ух ты, да это же число Пи:"+ pi);
+                "\n Работоспособность:" + processing +"\n Кол-во ядер:"+ cores + 
+                "\n Скорость процессора(ггц):"+ ghz + "\n Оперативка(мб):"+ ram +"\n Питание(квт):"
+                + power +"\n Ух ты, да это же число Пи:"+ pi);
 
         System.out.print("\n\n №2 Расчет стоимости товара со скидкой \n");
-        int product1 = 100;
-        int product2 = 200;
+        int priceGoodsX = 100;
+        int priceGoodsY = 200;
         byte discountPercentage = 11;
-        float priceDiscount = (product1 + product2) / 100 * discountPercentage;
-        float total = product1 + product2 - priceDiscount;
+        float priceDiscount = (priceGoodsX + priceGoodsY) / 100 * discountPercentage;
+        float total = priceGoodsX + priceGoodsY - priceDiscount;
         System.out.print(" Общая сумма скидки:" + priceDiscount + "\n Итого со скидкой:" + total);
 
         System.out.print("\n\n №3 Вывод на консоль слова JAVA \n");
@@ -27,70 +27,73 @@ public class VariablesTheme {
         System.out.print(" J  J  aaaaa  V V  aaaaa \n  JJ  a     a  V  a     a");
 
         System.out.print("\n\n №4 Отображение min и max значений числовых типов данных\n");
-        byte by = 127;
-        short sh = 32767;
-        int in = 2147483647;
-        long lo = 9223372036854775807l;
-        System.out.print(" Первоначальное значение:" + by +" "+ sh + " " + in + " " + lo);
-        by++;
-        sh++;
-        in++;
-        lo++;
-        System.out.print("\n Инкремент " + by +" "+ sh + " " + in + " " + lo);
-        by--;
-        sh--;
-        in--;
-        lo--;
-        System.out.print("\n Декремент " + by +" "+ sh + " " + in + " " + lo);
+        byte byteMaxMin = 127;
+        short shortMaxMin = 32767;
+        int intMaxMin = 2147483647;
+        long longMaxMin = 9223372036854775807l;
+        System.out.print(" Первоначальное значение:" + byteMaxMin + " " + shortMaxMin + " " +
+                intMaxMin + " " + longMaxMin);
+        byteMaxMin++;
+        shortMaxMin++;
+        intMaxMin++;
+        longMaxMin++;
+        System.out.print("\n Инкремент " + byteMaxMin + " " + shortMaxMin + " " + intMaxMin + " " +
+                longMaxMin);
+        byteMaxMin--;
+        shortMaxMin--;
+        intMaxMin--;
+        longMaxMin--;
+        System.out.print("\n Декремент " + byteMaxMin + " " + shortMaxMin + " " + intMaxMin + " " +
+                longMaxMin);
 
         System.out.print("\n\n №5 Перестановка значений переменных\n");
-        double first = 1.1d;
-        double second = 2.2d;
+        double num1 = 1.1d;
+        double num2 = 2.2d;
         //Первый способ
         System.out.print(" Перестановка при помощи третьей переменной - исходные значения: " 
-        + first +" / "+ second + " ");
-        double tmp = first;
-        first = second;
-        second = tmp;
-        System.out.print("| значения после перестановки: " + first +" / "+ second + " ");
+        + num1 +" / "+ num2 + " ");
+        double tmp = num1;
+        num1 = num2;
+        num2 = tmp;
+        System.out.print("| значения после перестановки: " + num1 +" / "+ num2 + " ");
         //Второй способ
-        System.out.print("\n Перестановка при помощи арефметических операции - исходные значения: "
-        + first +" / "+ second + " ");
-        first = first + second;
-        second = first - second;
-        first = first - second;
-        System.out.print("| значения после перестановки: " + first +" / "+ second + " ");
+        System.out.print("\n Перестановка при помощи арифметических операции - исходные значения: "
+                + num1 +" / "+ num2 + " ");
+        num1 += num2;
+        num2 = num1 - num2;
+        num1 -= num2;
+        System.out.print("| значения после перестановки: " + num1 +" / "+ num2 + " ");
         //Третий способ
         System.out.print("\n Перестановка при помощи побитовых операции - исходные значения: " 
-        + first +" / "+ second + " ");
-        first = first * 10;
-        second = second * 10;
-        int firstInt = (int)first;
-        int secondInt = (int)second;
-        firstInt = firstInt << 1;
-        secondInt = secondInt >> 1;
-        first = (double)firstInt / 10;
-        second = (double)secondInt / 10;
-        System.out.print("| значения после перестановки: " + first +" / "+ second + " ");
-        //Это колдунство что, правда будет применяться на практике? 
-        //Или все ради понимания движения битов?
+        + num1 +" / "+ num2 + " ");
+        num1 *= 10;
+        num2 *= 10;
+        int num1Int = (int) num1;
+        int num2Int = (int) num2;
+        num1Int = num1Int << 1;
+        num2Int = num2Int >> 1;
+        num1 = (double) num1Int / 10;
+        num2 = (double) num2Int / 10;
+        System.out.print("| значения после перестановки: " + num1 +" / "+ num2 + " ");
 
         System.out.print("\n\n №6 Вывод символов и их кодов\n");
-        byte a = 35;
-        byte b = 38;
-        byte c = 64;
-        byte d = 94;
-        byte e = 95;
-        System.out.println(" " + a +" - " + (char) a + "\n " + b +" - " + (char) b + "\n "
-        + c +" - " + (char) c + "\n " + d +" - " + (char) d + "\n " + e +" - " + (char) e);
+        char codeChar1 = 35;
+        char codeChar2 = 38;
+        char codeChar3 = 64;
+        char codeChar4 = 94;
+        char codeChar5 = 95;
+        System.out.println(" " + (byte) codeChar1 +" - " + codeChar1 + "\n " + (byte) codeChar2 + 
+                " - " + codeChar2 + "\n " + (byte) codeChar3 +" - " + codeChar3 + "\n " +
+                (byte) codeChar4 + " - " + codeChar4 + "\n " + (byte) codeChar5 + " - " +
+                codeChar5);
 
         System.out.print("\n\n №7 Произведение и сумма цифр числа \n");
-        int startNum = 345;
-        int hun = startNum / 100;
-        int ten = startNum / 10 % 10;
-        int one = startNum % 100 % 10;
-        System.out.println(" Произведение цифр числа: "+ startNum + " = "+ one*ten*hun + 
-        "\n Сумма цифр числа: "+ startNum + " = "+(one+ten+hun));
+        int srcNum = 345;
+        int hundreds = srcNum / 100;
+        int tens = srcNum / 10 % 10;
+        int units = srcNum % 10;
+        System.out.println(" Произведение цифр числа: "+ srcNum + " = "+ units * tens * hundreds + 
+                "\n Сумма цифр числа: "+ srcNum + " = "+ (hundreds + tens + units));
 
         System.out.print("\n\n №8 Вывод на консоль ASCII-арт Дюка \n");
         char ln = '/';
@@ -103,20 +106,20 @@ public class VariablesTheme {
         char rs = ')';
         char p = ' ';
         String row1 = String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + String.valueOf(p)
-        + String.valueOf(ln) + String.valueOf(rn) + String.valueOf(p) + String.valueOf(p) + 
-        String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
+                + String.valueOf(ln) + String.valueOf(rn) + String.valueOf(p) + String.valueOf(p) + 
+                String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
         String row2 = String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + String.valueOf(ln)
-        + String.valueOf(p) + String.valueOf(p) + String.valueOf(rn) + String.valueOf(p) + 
-        String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
+                + String.valueOf(p) + String.valueOf(p) + String.valueOf(rn) + String.valueOf(p) + 
+                String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
         String row3 = String.valueOf(p) + String.valueOf(p) + String.valueOf(ln) +
-        String.valueOf(bl) + String.valueOf(ls) + String.valueOf(p) + String.valueOf(rs) + 
-        String.valueOf(rn) + String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
+                String.valueOf(bl) + String.valueOf(ls) + String.valueOf(p) + String.valueOf(rs) + 
+                String.valueOf(rn) + String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
         String row4 = String.valueOf(p) + String.valueOf(ln) + String.valueOf(p) + String.valueOf(p)
-        + String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + 
-        String.valueOf(rn) + String.valueOf(p) + String.valueOf(p);
+                + String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + 
+                String.valueOf(rn) + String.valueOf(p) + String.valueOf(p);
         String row5 = String.valueOf(ln) + String.valueOf(bl) + String.valueOf(bl) + 
-        String.valueOf(bl) + String.valueOf(bl) + String.valueOf(ln) + String.valueOf(rn) + 
-        String.valueOf(bl) + String.valueOf(bl) + String.valueOf(rn) + String.valueOf(p);
+                String.valueOf(bl) + String.valueOf(bl) + String.valueOf(ln) + String.valueOf(rn) + 
+                String.valueOf(bl) + String.valueOf(bl) + String.valueOf(rn) + String.valueOf(p);
         System.out.println(row1 + "\n" + row2 + "\n" + row3 + "\n" + row4 + "\n" + row5 );
 
         System.out.print("\n\n №9 Отображение количества сотен, десятков и единиц числа \n");
@@ -125,7 +128,7 @@ public class VariablesTheme {
         int ten2 = startNum2 / 10 % 10;
         int one2 = startNum2 % 100 % 10;
         System.out.println(" Число: "+ startNum2 + " содержить "+ hun2 + " сотен, "+ ten2 + 
-        " десятков, "+ one2 + " единиц.");
+                " десятков, "+ one2 + " единиц.");
 
         System.out.print("\n\n №10 Преобразование секунд \n");
         int allsec = 86399;
