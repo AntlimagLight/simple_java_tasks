@@ -47,11 +47,11 @@ public class VariablesTheme {
                 longMaxMin);
 
         System.out.print("\n\n №5 Перестановка значений переменных\n");
-        double num1 = 1.1d;
-        double num2 = 2.2d;
+        double num1 = 1.1;
+        double num2 = 2.2;
         //Первый способ
         System.out.print(" Перестановка при помощи третьей переменной - исходные значения: " 
-        + num1 +" / "+ num2 + " ");
+                + num1 +" / "+ num2 + " ");
         double tmp = num1;
         num1 = num2;
         num2 = tmp;
@@ -65,13 +65,14 @@ public class VariablesTheme {
         System.out.print("| значения после перестановки: " + num1 +" / "+ num2 + " ");
         //Третий способ
         System.out.print("\n Перестановка при помощи побитовых операции - исходные значения: " 
-        + num1 +" / "+ num2 + " ");
+                + num1 +" / "+ num2 + " ");
         num1 *= 10;
         num2 *= 10;
         int num1Int = (int) num1;
         int num2Int = (int) num2;
-        num1Int = num1Int << 1;
-        num2Int = num2Int >> 1;
+        num1Int ^= num2Int;
+        num2Int ^= num1Int;
+        num1Int ^= num2Int;
         num1 = (double) num1Int / 10;
         num2 = (double) num2Int / 10;
         System.out.print("| значения после перестановки: " + num1 +" / "+ num2 + " ");
@@ -82,9 +83,9 @@ public class VariablesTheme {
         char codeChar3 = 64;
         char codeChar4 = 94;
         char codeChar5 = 95;
-        System.out.println(" " + (byte) codeChar1 +" - " + codeChar1 + "\n " + (byte) codeChar2 + 
-                " - " + codeChar2 + "\n " + (byte) codeChar3 +" - " + codeChar3 + "\n " +
-                (byte) codeChar4 + " - " + codeChar4 + "\n " + (byte) codeChar5 + " - " +
+        System.out.println(" " + (int) codeChar1 +" - " + codeChar1 + "\n " + (int) codeChar2 + 
+                " - " + codeChar2 + "\n " + (int) codeChar3 +" - " + codeChar3 + "\n " +
+                (int) codeChar4 + " - " + codeChar4 + "\n " + (int) codeChar5 + " - " +
                 codeChar5);
 
         System.out.print("\n\n №7 Произведение и сумма цифр числа \n");
@@ -96,45 +97,35 @@ public class VariablesTheme {
                 "\n Сумма цифр числа: "+ srcNum + " = "+ (hundreds + tens + units));
 
         System.out.print("\n\n №8 Вывод на консоль ASCII-арт Дюка \n");
-        char ln = '/';
-        char rn = (char) 92; 
-        //Вот тут я не понял, сколько раз не вводил с клавиатуры символ или не копировал с сайта,
-        //компилятор его не распознавал и выдавал ошибку. error: unclosed character literal Почему?
-        //Выкрутился так, но буду благодарен за ответ.
-        char bl = '_';
-        char ls = '(';
-        char rs = ')';
-        char p = ' ';
-        String row1 = String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + String.valueOf(p)
-                + String.valueOf(ln) + String.valueOf(rn) + String.valueOf(p) + String.valueOf(p) + 
-                String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
-        String row2 = String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + String.valueOf(ln)
-                + String.valueOf(p) + String.valueOf(p) + String.valueOf(rn) + String.valueOf(p) + 
-                String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
-        String row3 = String.valueOf(p) + String.valueOf(p) + String.valueOf(ln) +
-                String.valueOf(bl) + String.valueOf(ls) + String.valueOf(p) + String.valueOf(rs) + 
-                String.valueOf(rn) + String.valueOf(p) + String.valueOf(p) + String.valueOf(p);
-        String row4 = String.valueOf(p) + String.valueOf(ln) + String.valueOf(p) + String.valueOf(p)
-                + String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + String.valueOf(p) + 
-                String.valueOf(rn) + String.valueOf(p) + String.valueOf(p);
-        String row5 = String.valueOf(ln) + String.valueOf(bl) + String.valueOf(bl) + 
-                String.valueOf(bl) + String.valueOf(bl) + String.valueOf(ln) + String.valueOf(rn) + 
-                String.valueOf(bl) + String.valueOf(bl) + String.valueOf(rn) + String.valueOf(p);
-        System.out.println(row1 + "\n" + row2 + "\n" + row3 + "\n" + row4 + "\n" + row5 );
+        char slash = '/';
+        char backslash = '\\'; 
+        char underlining = '_';
+        char openingBracket = '(';
+        char closingBracket = ')';
+        char space = ' ';
+        System.out.println("" + space + space + space + space + slash + backslash + space + space +
+                space + space + space + "\n" + space + space + space + slash + space + space +
+                backslash + space + space + space + "\n" + space + space + slash + underlining +
+                openingBracket + space + closingBracket + backslash + space + space + space + "\n" +
+                space + slash + space + space + space + space + space + space + backslash + space +
+                space + "\n" + slash + underlining + underlining + underlining + underlining + 
+                slash + backslash + underlining + underlining + backslash + space);
+        // Я исправил, но у меня вопрос, что в таком случае означает в условии задани
+        // фраза "Построчно, а не посимвольно?"
 
         System.out.print("\n\n №9 Отображение количества сотен, десятков и единиц числа \n");
-        int srcNum2 = 123;
-        int hundreds2 = srcNum2 / 100;
-        int tens2 = srcNum2 / 10 % 10;
-        int units2 = srcNum2  % 10;
-        System.out.println(" Число: "+ srcNum2 + " содержить "+ hundreds2 + " сотен, "+ tens2 + 
-                " десятков, "+ units2 + " единиц.");
+        srcNum = 123;
+        hundreds = srcNum / 100;
+        tens = srcNum / 10 % 10;
+        units = srcNum  % 10;
+        System.out.println(" Число: "+ srcNum + " содержит "+ hundreds + " сотен, "+ tens + 
+                " десятков, "+ units + " единиц.");
 
         System.out.print("\n\n №10 Преобразование секунд \n");
-        int totalsec = 86399;
-        int min = totalsec / 60 % 60;
-        int sec = totalsec % 60;
-        int hours = totalsec / 3600;
+        int totalSec = 86399;
+        int min = totalSec / 60 % 60;
+        int sec = totalSec % 60;
+        int hours = totalSec / 3600;
         System.out.println(" " + hours +":" + min +":"+ sec);
     }
 }
