@@ -81,11 +81,11 @@ public class IfElseStatementTheme {
         System.out.print("\n №5 Определение буквы, числа или символа по их коду \n");
         char srcSymbol = '\u0057';
         System.out.print(" Символ: \"" + srcSymbol);
-        if ((int) srcSymbol > 47 & (int) srcSymbol < 58) {
+        if (srcSymbol > (char) 47 && srcSymbol < (char) 58) {
             System.out.print("\" является цифрой \n ");
-        } else if ((int) srcSymbol > 64 & (int) srcSymbol < 91) {
+        } else if (srcSymbol > (char) 64 && srcSymbol < (char) 91) {
             System.out.print("\" является большой буквой \n");
-        } else if ((int) srcSymbol > 96 & (int) srcSymbol < 123) {
+        } else if (srcSymbol > (char) 96 && srcSymbol < (char) 123) {
             System.out.print("\" является маленькой буквой \n");
         } else {
             System.out.print("\" не является цифрой, или буквой английского алфавита \n");
@@ -112,38 +112,34 @@ public class IfElseStatementTheme {
         int gradeProgramming;
         if (percentHistory <= 60) {
             gradeHistory = 2;
-        } else if (percentHistory > 60 & percentHistory <= 74) {
+        } else if (percentHistory <= 74) {
             gradeHistory = 3;
-        } else if (percentHistory > 74 & percentHistory <= 91) {
+        } else if (percentHistory <= 91) {
             gradeHistory = 4;
         } else {
             gradeHistory = 5;
         }
         if (percentProgramming <= 60) {
             gradeProgramming = 2;
-        } else if (percentProgramming > 60 & percentProgramming <= 74) {
+        } else if (percentProgramming <= 74) {
             gradeProgramming = 3;
-        } else if (percentProgramming > 74 & percentProgramming <= 91) {
+        } else if (percentProgramming <= 91) {
             gradeProgramming = 4;
         } else {
             gradeProgramming = 5;
         }
         System.out.print(" История - " + gradeHistory + " баллов \n Программирование - " +
                 gradeProgramming + " баллов \n Средний балл: " +
-        (float) (( gradeHistory + gradeProgramming ) / 2) + " баллов \n Средний процент: " +
-        (( percentHistory + percentProgramming ) / 2) + "%");
+                (float) (( gradeHistory + gradeProgramming ) / 2) + " баллов \n Средний процент: " +
+                (( percentHistory + percentProgramming ) / 2) + "%");
 
         System.out.print("\n\n №8 Расчет прибыли \n");
         int monthlyIncome = 13000;
         int monthlyRent = 5000;
         int monthlyPrimeСost = 9000;
-        char situationalPlusMinus = '+';
         int yearlyProfit = (monthlyIncome - monthlyRent - monthlyPrimeСost) * 12;
-        if (yearlyProfit < 0) {
-            yearlyProfit *= -1;
-            situationalPlusMinus = '-';
-        }
-        System.out.print(" Прибыль за год: " + situationalPlusMinus + yearlyProfit + " руб.");
+        System.out.print(" Прибыль за год: " + (yearlyProfit > 0 ? "+" : "") + yearlyProfit
+                 + " руб.");
 
         System.out.print("\n\n №9 подсчет количества банкнот \n");
         int totalBanknotes10USD = 5;
