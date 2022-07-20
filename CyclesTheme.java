@@ -109,21 +109,10 @@ public class CyclesTheme {
         System.out.print("\n\n №8 Проверка, является ли число палиндромом \n");
         srcNum = 1234321;
         int copySrcNum = srcNum;
-        int digit = 1;
         int checkingNum = 0;
-        while (copySrcNum > 0) {
-            digit *= 10;
-            copySrcNum /= 10;
-        }
-        //Первый цикл считает количество разрядов в исходном числе и записывается в digit 
-        //В виде 10^(количество разрядов-1), таким образом подставив вместе исходного другое
-        //число с любым количеством разрядов, которое принимается int, мы получим работающий код.
-        //Если предположить, что нам точно известно, что исходное число семизначное, то первый
-        //цикл не нужен, но мне захотелось чтобы все работало не зависимо от числа разрядов.
         copySrcNum = srcNum;
-        while (digit > 0) {
-            digit /= 10;
-            checkingNum += (copySrcNum % 10) * digit;
+        while (copySrcNum != 0) {
+            checkingNum = (checkingNum * 10) + (copySrcNum % 10);
             copySrcNum /= 10;
         }
         if (srcNum == checkingNum) {
@@ -134,12 +123,12 @@ public class CyclesTheme {
 
         System.out.print("\n\n №9 Определение, является ли число счастливым \n");
         srcNum = 786498;
-        System.out.print(" Число " + srcNum);
+        System.out.print(" Число " + srcNum + "\n");
         int sum1 = 0;
         int sum2 = 0;
         int count = 1;
-        while (count <= 6) {
-            if (count < 4) {
+        while (srcNum != 0) {
+            if (count <= 3) {
                 sum1 += srcNum % 10;
             } else {
                 sum2 += srcNum % 10;
@@ -170,7 +159,7 @@ public class CyclesTheme {
                     System.out.printf("%3s",j * (i + 1));
                 }
             }
-        System.out.println();
+            System.out.println();
         }
     }
 }
