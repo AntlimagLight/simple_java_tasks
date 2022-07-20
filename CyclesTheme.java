@@ -98,12 +98,12 @@ public class CyclesTheme {
         } while (symbolСount < 9);
 
         System.out.print("\n\n №7 Отображение ASCII-символов \n");
-        for (int count = 1; count <= 47; count += 2){
-            System.out.printf("  %2s %2s \n",count,(char) count);
+        for (int i = 1; i <= 47; i += 2) {
+            System.out.printf("  %2s %2s \n", i , (char) i);
         }
         System.out.print("\n ");
-        for (int count = 98; count <= 122; count += 2){
-            System.out.printf(" %2s %2s \n",count,(char) count);
+        for (int i = 98; i <= 122; i += 2) {
+            System.out.printf(" %2s %2s \n", i , (char) i);
         }
 
         System.out.print("\n\n №8 Проверка, является ли число палиндромом \n");
