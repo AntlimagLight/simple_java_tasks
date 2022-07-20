@@ -81,11 +81,11 @@ public class IfElseStatementTheme {
         System.out.print("\n №5 Определение буквы, числа или символа по их коду \n");
         char srcSymbol = '\u0057';
         System.out.print(" Символ: \"" + srcSymbol);
-        if (srcSymbol > (char) 47 && srcSymbol < (char) 58) {
+        if (srcSymbol >= '0' && srcSymbol <= '9') {
             System.out.print("\" является цифрой \n ");
-        } else if (srcSymbol > (char) 64 && srcSymbol < (char) 91) {
+        } else if (srcSymbol >= 'A' && srcSymbol <= 'Z') {
             System.out.print("\" является большой буквой \n");
-        } else if (srcSymbol > (char) 96 && srcSymbol < (char) 123) {
+        } else if (srcSymbol >= 'a' && srcSymbol <= 'z') {
             System.out.print("\" является маленькой буквой \n");
         } else {
             System.out.print("\" не является цифрой, или буквой английского алфавита \n");

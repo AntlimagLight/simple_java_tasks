@@ -1,34 +1,32 @@
 public class CyclesTheme {
     public static void main(String[] args) {
         System.out.print(" №1 Перевод псевдокода на язык Java \n");
-        int currientNum = -10;
+        int counter = -10;
         int sumEven = 0;
         int sumOdd = 0;
         do {
-            if (currientNum % 2 == 0) {
-               sumEven += currientNum;
+            if (counter % 2 == 0) {
+               sumEven += counter;
             } else {
-               sumOdd += currientNum;
+               sumOdd += counter;
             }
-           currientNum++;
-        } while (currientNum <= 21);
+           counter++;
+        } while (counter <= 21);
         System.out.print(" В промежутке [-10, 21] сумма четных чисел = " + sumEven + " , а нечетных = " + sumOdd);
 
         System.out.print("\n\n №2 Вывод чисел в интервале (min и max) в порядке убывания \n ");
         int num1 = -1;
         int num2 = 5;
         int num3 = 10;
-        int max = ( num1 > num2 ) ? num1 : num2;
-        max = ( max > num3 ) ? max : num3;
-        int min  = ( num1 < num2 ) ? num1 : num2;
-        min = ( min < num3 ) ? min : num3;
-        for (int count = max; count >= min; count--) {
+        int max = (num1 > num2) ? num1 : num2;
+        max = (max > num3) ? max : num3;
+        int min  = (num1 < num2) ? num1 : num2;
+        min = (min < num3) ? min : num3;
+        for (int count = max - 1; count > min; count--) {
             System.out.print(count + " ");
         }
 
         System.out.print("\n\n №3 Вывод реверсивного числа и суммы его цифр \n ");
-        // Я так понимаю, что до массивов мы не добрались и задачу надо решить без них? 
-        // Тогда вижу это как-то так, но интуитивно хочется записывать цифры в массив.
         int srcNum = 1234;
         int sum = 0; 
         while (srcNum > 0) {
@@ -39,94 +37,94 @@ public class CyclesTheme {
         System.out.print(" Сумма цифр исходного числа: " + sum);
 
         System.out.print("\n\n №4 Вывод чисел на консоль в несколько строк \n");
-        int countNewLine = 0;
-        for (int count = 1 ; count < 24 ; count += 2 ){
-            System.out.printf("%3s",count);
-            countNewLine++;
-            if (countNewLine == 5) {
-                System.out.print("\n");
-                countNewLine = 0;
+        int numbersPerLine = 0;
+        for (int i = 1; i < 24; i += 2) {
+            System.out.printf("%3s", i);
+            numbersPerLine++;
+            if (numbersPerLine == 5) {
+                System.out.println();
+                numbersPerLine = 0;
             }
         }
-        while (countNewLine < 5) {
-            System.out.printf("%3s",0);
-            countNewLine++;
+        for (int i = numbersPerLine; i < 5; i++) {
+            System.out.printf("%3s", 0);
         }
 
         System.out.print("\n\n №5 Проверка количества единиц на четность \n ");
         srcNum = 3141591;
         System.out.print("Число " + srcNum + " содержит ");
-        int numberDigitsOne = 0;
+        int countOnes = 0;
         while (srcNum > 0) {
             if (srcNum % 10 == 1) {
-                numberDigitsOne++;
+                countOnes++;
             }
-        srcNum /= 10;
+            srcNum /= 10;
         }
-        if (numberDigitsOne % 2 == 0) {
+        if (countOnes % 2 == 0) {
             System.out.print("четное количество единиц");
         } else {
             System.out.print("нечетное количество единиц");
         }
-        // По условию задачи не вполне понятно о каких единицах идет речь, о разряде единиц 
-        // или о количестве цифр 1. Т.к проверить на четность разряд единиц слишком легко
-        // и для этого не нужны циклы, полагаю что речь идет о количестве цифр 1.
 
         System.out.print("\n\n №6 Отображение фигур в консоли \n");
-        for (int count = 1 ; count < 51 ; count++ ){
+        for (int i = 1; i < 51; i++) {
             System.out.print("*");
-            if (count % 10 == 0) {
-                System.out.print("\n");
+            if (i % 10 == 0) {
+                System.out.println();
             }
         }
-        System.out.print("\n");
-        int symbolСount = 0;
-        int shiftCount = 5;
-        int shiftTmp = shiftCount;
-        while (symbolСount < 15) {
-            System.out.print("#");
-            shiftTmp -= 1;
-                if (shiftTmp == 0) {
-                System.out.print("\n");
-                shiftCount -= 1;
-                shiftTmp = shiftCount;
-            }
-            symbolСount++;
-        }
-        System.out.print("\n");
+        System.out.println();
 
-        symbolСount = 0;
-        do{
-            if (symbolСount == 1 | symbolСount == 3 | symbolСount == 6 | symbolСount == 8) {
-                System.out.print("\n");
+        int rowСount = 0;
+        int charPerLine = 0;
+        while (rowСount < 5) {
+            rowСount++;
+            charPerLine = rowСount;
+            while (charPerLine <= 5) {
+                System.out.print("#");
+                charPerLine++;
             }
-        System.out.print("$");
-        symbolСount++;
+            System.out.println();
+        }
+
+        System.out.println();
+        int symbolСount = 0;
+        do{
+            if (symbolСount == 1 || symbolСount == 3 || symbolСount == 6 || symbolСount == 8) {
+                System.out.println();
+            }
+            System.out.print("$");
+            symbolСount++;
         } while (symbolСount < 9);
 
-        //System.out.print("\n\n №7 Отображение ASCII-символов \n");
-        //for (int count = 1; count <= 47; count += 2){
-        //    System.out.printf("  %2s %2s \n",count,(char) count);
-        //}
-        //System.out.print("\n ");
-        //for (int count = 98; count <= 122; count += 2){
-        //    System.out.printf(" %2s %2s \n",count,(char) count);
-        //}
+        System.out.print("\n\n №7 Отображение ASCII-символов \n");
+        for (int count = 1; count <= 47; count += 2){
+            System.out.printf("  %2s %2s \n",count,(char) count);
+        }
+        System.out.print("\n ");
+        for (int count = 98; count <= 122; count += 2){
+            System.out.printf(" %2s %2s \n",count,(char) count);
+        }
 
         System.out.print("\n\n №8 Проверка, является ли число палиндромом \n");
         srcNum = 1234321;
-        int tmpNum = srcNum;
+        int copySrcNum = srcNum;
         int digit = 1;
         int checkingNum = 0;
-        while (tmpNum > 0) {
+        while (copySrcNum > 0) {
             digit *= 10;
-            tmpNum /= 10;
+            copySrcNum /= 10;
         }
-        tmpNum = srcNum;
+        //Первый цикл считает количество разрядов в исходном числе и записывается в digit 
+        //В виде 10^(количество разрядов-1), таким образом подставив вместе исходного другое
+        //число с любым количеством разрядов, которое принимается int, мы получим работающий код.
+        //Если предположить, что нам точно известно, что исходное число семизначное, то первый
+        //цикл не нужен, но мне захотелось чтобы все работало не зависимо от числа разрядов.
+        copySrcNum = srcNum;
         while (digit > 0) {
             digit /= 10;
-            checkingNum += (tmpNum % 10) * digit;
-            tmpNum /= 10;
+            checkingNum += (copySrcNum % 10) * digit;
+            copySrcNum /= 10;
         }
         if (srcNum == checkingNum) {
             System.out.print(" Число " + srcNum + " является палиндромом.");
@@ -139,37 +137,40 @@ public class CyclesTheme {
         System.out.print(" Число " + srcNum);
         int sum1 = 0;
         int sum2 = 0;
-        for (int count = 1 ; count < 7 ; count++ ){
+        int count = 1;
+        while (count <= 6) {
             if (count < 4) {
                 sum1 += srcNum % 10;
             } else {
                 sum2 += srcNum % 10;
             }
             srcNum /= 10;
+            count++;
         }
+
         if (sum1 == sum2) {
-            System.out.print(" является счастливым.\n Сумма цифр: " + sum1 + " + " + sum2);
+            System.out.print(" является счастливым.\n Сумма цифр: " + sum2 + " = " + sum1);
         } else {
-            System.out.print(" не является счастливым.\n Сумма цифр: " + sum1 + " + " + sum2);
+            System.out.print(" не является счастливым.\n Сумма цифр: " + sum2 + " = " + sum1);
         }
 
         System.out.print("\n\n №10 Вывод таблицы умножения Пифагора \n");
-        for (int factorY = 0 ; factorY < 9 ; factorY++ ){
-            if (factorY == 1) {
-                System.out.print("   __________________________\n");
+        for (int i = 0; i < 9; i++) {
+            if (i == 1) {
+                System.out.print("  ___________________________\n");
             }
-            for (int factorX = 0 ; factorX < 10 ; factorX++ ){
-                if (factorX == 0) {
-                    factorX++;
-                    System.out.printf("%3s",factorX * (factorY + 1));
-                    factorX--;
-              } else if (factorX == 1) {
+            for (int j = 0; j < 10; j++) {
+                if (j == 0) {
+                    j++;
+                    System.out.printf("%3s",j * (i + 1));
+                    j--;
+              } else if (j == 1) {
                     System.out.print(" |");
                 } else {
-                    System.out.printf("%3s",factorX * (factorY + 1));
+                    System.out.printf("%3s",j * (i + 1));
                 }
             }
-        System.out.print("\n");
+        System.out.println();
         }
     }
 }
