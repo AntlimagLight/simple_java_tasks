@@ -29,10 +29,11 @@ public class CyclesTheme {
         System.out.print("\n\n №3 Вывод реверсивного числа и суммы его цифр \n ");
         int srcNum = 1234;
         int sum = 0; 
-        while (srcNum > 0) {
-            System.out.print(srcNum % 10);
-            sum += srcNum % 10;
-            srcNum /= 10;
+        int digit = srcNum;
+        while (digit > 0) {
+            System.out.print(digit % 10);
+            sum += digit % 10;
+            digit /= 10;
         }
         System.out.print(" Сумма цифр исходного числа: " + sum);
 
@@ -89,7 +90,7 @@ public class CyclesTheme {
 
         System.out.println();
         int symbolСount = 0;
-        do{
+        do {
             if (symbolСount == 1 || symbolСount == 3 || symbolСount == 6 || symbolСount == 8) {
                 System.out.println();
             }
@@ -98,24 +99,25 @@ public class CyclesTheme {
         } while (symbolСount < 9);
 
         System.out.print("\n\n №7 Отображение ASCII-символов \n");
+        System.out.printf("  %3s %4s \n", "Dec" , " Char");
         for (int i = 1; i <= 47; i += 2) {
-            System.out.printf("  %2s %2s \n", i , (char) i);
+            System.out.printf("  %3s   %3s \n", i , (char) i);
         }
         System.out.print("\n ");
         for (int i = 98; i <= 122; i += 2) {
-            System.out.printf(" %2s %2s \n", i , (char) i);
+            System.out.printf("  %2s   %3s \n", i , (char) i);
         }
 
-        System.out.print("\n\n №8 Проверка, является ли число палиндромом \n");
+        System.out.print("\n №8 Проверка, является ли число палиндромом \n");
         srcNum = 1234321;
         int copySrcNum = srcNum;
-        int checkingNum = 0;
+        int reverse = 0;
         copySrcNum = srcNum;
         while (copySrcNum != 0) {
-            checkingNum = (checkingNum * 10) + (copySrcNum % 10);
+            reverse = (reverse * 10) + (copySrcNum % 10);
             copySrcNum /= 10;
         }
-        if (srcNum == checkingNum) {
+        if (srcNum == reverse) {
             System.out.print(" Число " + srcNum + " является палиндромом.");
         } else {
             System.out.print(" Число " + srcNum + " не является палиндромом.");
