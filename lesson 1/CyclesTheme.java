@@ -28,12 +28,13 @@ public class CyclesTheme {
 
         System.out.print("\n\n №3 Вывод реверсивного числа и суммы его цифр \n ");
         int srcNum = 1234;
-        int sum = 0; 
-        int digit = srcNum;
-        while (digit > 0) {
-            System.out.print(digit % 10);
-            sum += digit % 10;
-            digit /= 10;
+        int sum = 0;
+        int digit;
+        while (srcNum > 0) {
+            digit = srcNum % 10;
+            System.out.print(digit);
+            sum += digit;
+            srcNum /= 10;
         }
         System.out.print(" Сумма цифр исходного числа: " + sum);
 
@@ -112,7 +113,6 @@ public class CyclesTheme {
         srcNum = 1234321;
         int copySrcNum = srcNum;
         int reverse = 0;
-        copySrcNum = srcNum;
         while (copySrcNum != 0) {
             reverse = (reverse * 10) + (copySrcNum % 10);
             copySrcNum /= 10;

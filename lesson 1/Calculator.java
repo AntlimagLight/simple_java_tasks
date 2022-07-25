@@ -8,8 +8,6 @@ public class Calculator {
             result = num1 + num2;
         } else if (sign == '-') {
             result = num1 - num2;
-        } else if (sign == '-') {
-            result = num1 - num2;
         } else if (sign == '*') {
             result = num1 * num2;
         } else if (sign == '/') {
@@ -19,7 +17,6 @@ public class Calculator {
         } else if (sign == '^') {
             for (int i = 1; i <= num2; i++) {
                 result *= num1;
-                System.out.println (result);
             }
         }
         System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
