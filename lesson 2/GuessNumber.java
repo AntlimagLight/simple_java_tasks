@@ -9,7 +9,6 @@ public class GuessNumber {
 
     public void randomizeNumber() {
         hiddenNum = (int) (Math.random() * 100) + 1;
-        System.out.println("Число " + hiddenNum + " Загадано."); // Вспомогательно
     }
 
     public boolean tryToGuess() {
