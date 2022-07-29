@@ -2,7 +2,6 @@ public class Calculator {
 
     private int num1;
     private int num2;
-    private int result;
     private char sign;
 
 //    public int getNum1() {
@@ -29,11 +28,8 @@ public class Calculator {
         this.sign = sign;
     }
 
-    public int getResult() {
-        return result;
-    }
-
-    public void calculation() {
+    public int calculate() {
+        int result;
         switch (sign) {
             case '+':
                 result = num1 + num2;
@@ -55,25 +51,9 @@ public class Calculator {
                 break;
             default: 
                 System.out.println(" Ошибка! Операция не распознана!");
+                result = 0;
         }
-
-//        Старый код через Ифы
-//        if (sign == '+') {
-//            result = num1 + num2;
-//        } else if (sign == '-') {
-//            result = num1 - num2;
-//        } else if (sign == '*') {
-//            result = num1 * num2;
-//        } else if (sign == '/') {
-//            result = num1 / num2;
-//        } else if (sign == '%') {
-//            result = num1 % num2;
-//        } else if (sign == '^') {
-//            result = 1;
-//            for (int i = 1; i <= num2; i++) {
-//                result *= num1;
-//            }
-//        }
+        return result;
     }
 }
 

@@ -1,13 +1,7 @@
-import java.util.Scanner;
-
 public class Player {
 
     private String name;
     private int chosenNum;
-
-    public Player() {
-        this("Player1");
-    }
 
     public Player(String name) {
         this.name = name;
@@ -21,9 +15,8 @@ public class Player {
         return chosenNum;
     }
 
-    public void choseNumber() {
-        Scanner scanner = new Scanner(System.in);
-        chosenNum = scanner.nextInt();
+    public void setChosenNum(int chosenNum) {
+        this.chosenNum = chosenNum;
     }
 
 }

@@ -1,34 +1,37 @@
 import java.util.Scanner;
 
 public class CalculatorTest {
+
+    public static boolean checkContinue(String option) {
+        return (!option.equals("yes") && !option.equals("no"));
+    }
+
     public static void main(String[] args) {
-        String continueCheck = "yes";
-        int num1;
-        int num2;
-        char sign;
-        while (continueCheck.equals("yes")) {
+        String option = "yes";
+        while (option.equals("yes")) {
             Calculator operation = new Calculator();
             Scanner scanner = new Scanner(System.in);
             System.out.println(" Введите первое число: ");
-            num1 = scanner.nextInt();
+            int num1 = scanner.nextInt();
             operation.setNum1(num1);
             System.out.println(" Введите знак математической операции: ");
-            sign = (char) scanner.next().charAt(0);
+            char sign = (char) scanner.next().charAt(0);
             operation.setSign(sign);
             System.out.println(" Введите второе число: ");
-            num2 = scanner.nextInt();
+            int num2 = scanner.nextInt();
             scanner.nextLine();
             operation.setNum2(num2);
-            operation.calculation();
             System.out.println(" Результат вычислений: " + num1 + " " + sign + " " + num2 + " = " +
-                    operation.getResult() + "\n");
+                    operation.calculate() + "\n");
             do {
                 System.out.println(" Хотите продолжить вычисление? [yes / no] " );
-                continueCheck = scanner.nextLine();
-                if (!continueCheck.equals("yes") & !continueCheck.equals("no")) {
+                option = scanner.nextLine();
+                if (checkContinue(option)) {
                     System.out.println(" Некорректный ответ. Пожалуйста введите yes или no." ); 
                 }
-            } while (!continueCheck.equals("yes") & !continueCheck.equals("no")); 
+            } while (checkContinue(option)); 
         } 
     }
+
+
 }
