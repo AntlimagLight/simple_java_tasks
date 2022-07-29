@@ -2,10 +2,6 @@ import java.util.Scanner;
 
 public class CalculatorTest {
 
-    public static boolean checkContinue(String option) {
-        return (!option.equals("yes") && !option.equals("no"));
-    }
-
     public static void main(String[] args) {
         String option = "yes";
         while (option.equals("yes")) {
@@ -31,6 +27,10 @@ public class CalculatorTest {
                 }
             } while (checkContinue(option)); 
         } 
+    }
+
+    private static boolean checkContinue(String option) {
+        return (!option.equals("yes") && !option.equals("no"));
     }
 
 

@@ -2,10 +2,6 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
 
-    public static boolean checkContinue(String option) {
-        return (!option.equals("yes") && !option.equals("no"));
-    }
-
     public static void main(String[] args) {
         String option = "yes";
         Scanner scanner = new Scanner(System.in);
@@ -15,8 +11,8 @@ public class GuessNumberTest {
         Player player2 = new Player(scanner.nextLine());
 
         while (option.equals("yes")) {
-            GuessNumber currentGame = new GuessNumber(player1, player2);
-            currentGame.playGame();
+            GuessNumber game = new GuessNumber(player1, player2);
+            game.play();
             do {
                 System.out.println("Хотите продолжить игру? [yes / no] " );
                 option = scanner.nextLine();
@@ -25,5 +21,9 @@ public class GuessNumberTest {
                 }
             } while (checkContinue(option)); 
         } 
+    }
+
+    private static boolean checkContinue(String option) {
+        return (!option.equals("yes") && !option.equals("no"));
     }
 }
