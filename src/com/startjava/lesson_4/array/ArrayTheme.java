@@ -35,13 +35,14 @@ public class ArrayTheme {
         for (int i = 0; i < len; i++) {
             floatNums[i] = (float) Math.random();
         }
-
-        float midNum = 0f;
         outputFloatArray(floatNums);
+
+/*        float midNum = 0f;
         for (int i = 0; i < (len / 2 + 1); i++) {
             midNum = (searchLeastAfterGot(floatNums, midNum));
-        }
+        }*/
 
+        float midNum = floatNums[len / 2];
         int countDel = 0;
         for (int i = 0; i < len; i++) {
             if (floatNums[i] > midNum) {
@@ -128,7 +129,7 @@ public class ArrayTheme {
         System.out.print("\n\n");
     }
 
-    private static float searchLeastAfterGot(float[] array, float gotNum) {
+/*    private static float searchLeastAfterGot(float[] array, float gotNum) {
         float least = 1f;
         for (float element : array) {
             if (element > gotNum) {
@@ -136,7 +137,7 @@ public class ArrayTheme {
             }
         }
         return least;
-    }
+    }*/
 
     private static boolean checkUnique(int[] array, int checkingNum) {
         for (int element : array) {
@@ -148,8 +149,10 @@ public class ArrayTheme {
     }
 
     private static void outputStringArray(String[] array) {
+        int count = 1;
         for (String element : array) {
-            System.out.print(element + ", ");
+            System.out.print(element + ((array.length <= count) ? "." : ", "));
+            count++;
         }
         System.out.println();
     }
