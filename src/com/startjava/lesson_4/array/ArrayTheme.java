@@ -5,30 +5,29 @@ import java.util.Arrays;
 public class ArrayTheme {
 
     public static void main(String[] args) {
-
         System.out.println("№1 Реверс значений массива");
-        int[] numbers = {1, 2, 3, 4, 5, 6, 7};
-        outputIntArray(numbers, 8);
-        for (int num : numbers) {
-            numbers[num - 1] = 8 - num;
+        int[] intArr = {1, 2, 3, 4, 5, 6, 7};
+        outputIntArray(intArr, 8);
+        for (int num : intArr) {
+            intArr[num - 1] = 8 - num;
         }
-        outputIntArray(numbers, 8);
+        outputIntArray(intArr, 8);
 
         System.out.println("\n№2 Вывод произведения элементов массива  ");
 
-        numbers = new int[10];
-        int len = numbers.length;
+        intArr = new int[10];
+        int len = intArr.length;
         for (int i = 0; i < len; i++) {
-            numbers[i] = i;
+            intArr[i] = i;
         }
         int prod = 1;
         for (int i = 2; i < len - 1; i++) {
-            System.out.print(numbers[i] + (!(i >= 8) ? " * " : " = "));
-            prod *= numbers[i];
+            System.out.print(intArr[i] + (i <= 7 ? " * " : " = "));
+            prod *= intArr[i];
         }
-        System.out.print(prod + "\n");
-        System.out.println("Элемент с индексом 0 : " + numbers[0]);
-        System.out.println("Элемент с индексом 9 : " + numbers[9]);
+        System.out.println(prod);
+        System.out.println("Элемент с индексом 0 : " + intArr[0]);
+        System.out.println("Элемент с индексом 9 : " + intArr[9]);
 
         System.out.println("\n№3 Удаление элементов массива ");
         float[] floatNums = new float[15];
@@ -55,30 +54,31 @@ public class ArrayTheme {
 
         System.out.println("\n№4 Вывод элементов массива лесенкой в обратном порядке ");
         char[] alphabet = new char[26];
-        for (int i = 'A'; i <= (int) 'Z'; i++) {
-            alphabet[i - 65] = (char) i;
+        len = alphabet.length;
+        for (char i = 'A'; i <= 'Z'; i++) {
+            alphabet[i - 65] = i;
         }
         int count = 0;
         for (char letter : alphabet) {
-            for (int i = 0; i <= count; i++) {
-                System.out.print(alphabet[25 - i]);
+            for (int i = len - 1; i >= len - 1 - count; i--) {
+                System.out.print(alphabet[i]);
             }
-            System.out.print("\n");
+            System.out.println();
             count++;
         }
 
         System.out.println("\n№5 Генерация уникальных чисел ");
-        numbers = new int[30];
-        len = numbers.length;
+        intArr = new int[30];
+        len = intArr.length;
         int randomNum;
         for (int i = 0; i < len; i++) {
             do {
                 randomNum = (int) (60 + Math.random() * 40);
-            } while (checkUnique(numbers, randomNum));
-            numbers[i] = randomNum;
+            } while (checkUnique(intArr, randomNum));
+            intArr[i] = randomNum;
         }
-        Arrays.sort(numbers);
-        outputIntArray(numbers, 10);
+        Arrays.sort(intArr);
+        outputIntArray(intArr, 10);
 
         System.out.println("\n№6 Сдвиг элементов массива ");
         String[] srcArray = {"", "AA", "", "BBB", "CC", "D", "", "E", "FF", "G", ""};
@@ -87,50 +87,51 @@ public class ArrayTheme {
 
         count = 0;
         for (String string : srcArray) {
-            if (!string.equals("")) {
+            if (!string.isBlank()) {
                 count++;
             }
         }
-        String[] finishArray = new String[count];
+        String[] destArray = new String[count];
         len = srcArray.length;
-        int countFinishArray = 0;
+        int lastIdx = 0;
         for (int i = 0; i < len; i++) {
-            if (!srcArray[i].equals("")) {
+            if (!srcArray[i].isBlank()) {
                 int countLength = 1;
-                while (!srcArray[i + countLength].equals("") & i + countLength <= len) {
+                while (!srcArray[i + countLength].isBlank() && i + countLength <= len) {
                     countLength++;
                 }
-                System.arraycopy(srcArray, i, finishArray, countFinishArray, countLength);
-                countFinishArray += countLength;
+                System.arraycopy(srcArray, i, destArray, lastIdx, countLength);
+                lastIdx += countLength;
                 i += countLength - 1;
             }
         }
 
         System.out.println("Итоговый массив : ");
-        outputStringArray(finishArray);
+        outputStringArray(destArray);
     }
     private static void outputIntArray(int[] array, int elementsPerLine) {
-        int count = 0;
+        int count = 1;
         for (int element : array) {
+            System.out.print(element);
+            System.out.print((count % elementsPerLine == 0 || element == array[array.length - 1]) ? "\n" : " ");
             count++;
-            System.out.print(element + " ");
-            System.out.print((count % elementsPerLine == 0 || element == array[array.length - 1]) ? "\n" : "");
         }
     }
 
     private static void outputFloatArray(float[] array) {
         int count = 0;
         for (float element : array) {
-            System.out.printf("%.3f ", element );
-            System.out.print((count == 7 || element == array[array.length - 1]) ? "\n" : "");
+            System.out.printf("%.3f", element);
+            System.out.print((count == 7) ? "\n" : " ");
             count++;
         }
+        System.out.print("\n\n");
     }
 
-    private static float searchLeastAfterGot(float[] array, float gotNumber) {
+    private static float searchLeastAfterGot(float[] array, float gotNum) {
         float least = 1f;
         for (float element : array) {
-            if (element > gotNumber) {
+            if (element > gotNum) {
                 least = Math.min(least, element);
             }
         }
@@ -145,11 +146,12 @@ public class ArrayTheme {
         }
         return false;
     }
+
     private static void outputStringArray(String[] array) {
         for (String element : array) {
-            System.out.println(element);
+            System.out.print(element + ", ");
         }
-        System.out.println("Конец массива \n");
+        System.out.println();
     }
 
 }
