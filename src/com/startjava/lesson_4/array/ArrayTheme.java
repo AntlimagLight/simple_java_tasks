@@ -37,11 +37,6 @@ public class ArrayTheme {
         }
         outputFloatArray(floatNums);
 
-/*        float midNum = 0f;
-        for (int i = 0; i < (len / 2 + 1); i++) {
-            midNum = (searchLeastAfterGot(floatNums, midNum));
-        }*/
-
         float midNum = floatNums[len / 2];
         int countDel = 0;
         for (int i = 0; i < len; i++) {
@@ -128,16 +123,6 @@ public class ArrayTheme {
         }
         System.out.print("\n\n");
     }
-
-/*    private static float searchLeastAfterGot(float[] array, float gotNum) {
-        float least = 1f;
-        for (float element : array) {
-            if (element > gotNum) {
-                least = Math.min(least, element);
-            }
-        }
-        return least;
-    }*/
 
     private static boolean checkUnique(int[] array, int checkingNum) {
         for (int element : array) {
