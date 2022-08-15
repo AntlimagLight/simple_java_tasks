@@ -1,8 +1,8 @@
 package com.startjava.lesson_4.calculator;
 
 public class Calculator {
-    public static int calculate(String mathAction) throws InvalidValuesException {
-        String[] mathElements = mathAction.split(" ");
+    public static int calculate(String expression) {
+        String[] mathElements = expression.split(" ");
         float num1 = Float.parseFloat(mathElements[0]);
         float num2 = Float.parseFloat(mathElements[2]);
         char sign = mathElements[1].charAt(0);
@@ -23,4 +23,4 @@ public class Calculator {
     }
 }
 
-class InvalidValuesException extends Exception {}
+class InvalidValuesException extends RuntimeException {}

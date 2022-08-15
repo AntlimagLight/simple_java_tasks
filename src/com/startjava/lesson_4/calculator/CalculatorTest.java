@@ -10,8 +10,8 @@ public class CalculatorTest {
             Scanner scanner = new Scanner(System.in);
             try {
                 System.out.println("Введите математическое выражение: ");
-                String mathAction = scanner.nextLine();
-            System.out.print("= " + Calculator.calculate(mathAction) + "\n");
+                String expression = scanner.nextLine();
+                System.out.println(expression + " = " + Calculator.calculate(expression));
             } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("Неверный формат выражения! [Вводите в формате X + Y]");
                 continue;
