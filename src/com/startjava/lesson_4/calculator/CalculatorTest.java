@@ -18,7 +18,7 @@ public class CalculatorTest {
             } catch (IllegalArgumentException e) {
                 System.out.println("Несуществующая операция! [доступные операции + - / * ^]");
                 continue;
-            } catch (InvalidValuesException e) {
+            } catch (InvalidNumException e) {
                 System.out.println("Введенные числа должны быть положительными и целыми. Попробуйте еще раз.");
                 continue;
             }
