@@ -7,7 +7,7 @@ public class GuessNumber {
 
     private int hiddenNum;
 
-    private Player[] Players = new Player[3];
+    private Player[] Players;
 
     public GuessNumber(Player[] Players) {
         this.Players = Players;
@@ -26,7 +26,6 @@ public class GuessNumber {
                 Players[i].setTrys(10);
             }
             shufflePlayers();
-            System.out.println("Тсссс: " + hiddenNum);
             turns:
             while (true) {
                 for (int i = 0; i < 3; i++) {
@@ -61,32 +60,26 @@ public class GuessNumber {
     }
 
     private void outputPlayerTrys(Player currentPlayer) {
-        int tryCount = 10 - currentPlayer.getTrys();
-        int [] playerTrys = currentPlayer.getChosenNums(tryCount + 1);
-        if (playerTrys[tryCount] == 0) {
-            playerTrys = currentPlayer.getChosenNums(tryCount);
-            tryCount--;
-        }
+        int [] playerTrys = currentPlayer.getChosenNums();
         System.out.println("Попытки игрока: " + currentPlayer.getName());
         for (int oneTry : playerTrys) {
             System.out.print(oneTry + " ");
         }
-        currentPlayer.resetChosenNums(tryCount + 1);
+        currentPlayer.resetChosenNums();
         System.out.println();
     }
 
     private boolean makeTurn(Player currentPlayer) {
-        int tryCount = 10 - currentPlayer.getTrys();
         if (currentPlayer.getTrys() > 0) {
-            currentPlayer.setChosenNum(choseNumber(currentPlayer), tryCount);
-            if (currentPlayer.getChosenNum(tryCount) == 0) {
+            currentPlayer.addNum(choseNumber(currentPlayer), 10 - currentPlayer.getTrys());
+            if (currentPlayer.getChosenNum() == 0) {
                 System.out.println("Число должно быть в интервале от 1 до 100, попытка не засчитана, ход передан " +
                         "следующему " + "игроку!");
                 currentPlayer.setTrys(currentPlayer.getTrys() + 1);
             } else {
-                if (checkNumber(currentPlayer.getChosenNum(tryCount))) {
+                if (checkNumber(currentPlayer.getChosenNum())) {
                     System.out.println("Победитель раунда - " + currentPlayer.getName() + " / угадано с попытки №" +
-                            (tryCount + 1));
+                            (11 - currentPlayer.getTrys()));
                     currentPlayer.setWins(currentPlayer.getWins() + 1);
                     return true;
                 }

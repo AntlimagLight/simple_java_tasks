@@ -17,21 +17,27 @@ public class Player {
         return name;
     }
 
-    public int getChosenNum(int i) {
-        return chosenNums[i];
+    public int getChosenNum() {
+        return chosenNums[10 - trys];
     }
 
-    public int[] getChosenNums(int i) {
-        return Arrays.copyOf(chosenNums, i);
+    public int[] getChosenNums() {
+        if (chosenNums[11 - trys] == 0) {
+            return Arrays.copyOf(chosenNums, 10 - trys);
+        }
+        return Arrays.copyOf(chosenNums, 11 - trys);
     }
 
-    public void resetChosenNums(int length) {
-        Arrays.fill(chosenNums, 0, length, 0);
+    public void resetChosenNums() {
+        Arrays.fill(chosenNums, 0, 11 - trys, 0);
+        if (chosenNums[11 - trys] == 0) {
+            Arrays.fill(chosenNums, 0, 10 - trys, 0);
+        }
     }
 
-    public void setChosenNum(int chosenNum, int i) {
+    public void addNum(int chosenNum, int i) {
         if (chosenNum > 0 && chosenNum <= 100) {
-            this.chosenNums[i] = chosenNum;
+            chosenNums[i] = chosenNum;
         }
     }
 

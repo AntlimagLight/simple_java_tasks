@@ -6,14 +6,10 @@ public class GuessNumberTest {
 
     public static void main(String[] args) {
         String option = "yes";
-        Player[] Players = new Player[3];
+        Player[] players = createPlayers();
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Введите имя игрока № " + (i + 1) + " :");
-            Players[i] = new Player(scanner.nextLine());
-        }
         while (option.equals("yes")) {
-            GuessNumber game = new GuessNumber(Players);
+            GuessNumber game = new GuessNumber(players);
             game.play();
             do {
                 System.out.println("Хотите сыграть еще раз? [yes / no] " );
@@ -28,5 +24,16 @@ public class GuessNumberTest {
     private static boolean checkContinue(String option) {
         return (!option.equals("yes") && !option.equals("no"));
     }
+
+    private static Player[] createPlayers() {
+        Player[] players = new Player[3];
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Введите имя игрока № " + (i + 1) + " :");
+            players[i] = new Player(scanner.nextLine());
+        }
+        return players;
+    }
+
 
 }
