@@ -6,8 +6,8 @@ public class GuessNumberTest {
 
     public static void main(String[] args) {
         String option = "yes";
-        Player[] players = createPlayers();
         Scanner scanner = new Scanner(System.in);
+        Player[] players = createPlayers(scanner);
         while (option.equals("yes")) {
             GuessNumber game = new GuessNumber(players);
             game.play();
@@ -25,15 +25,12 @@ public class GuessNumberTest {
         return (!option.equals("yes") && !option.equals("no"));
     }
 
-    private static Player[] createPlayers() {
+    private static Player[] createPlayers(Scanner scanner) {
         Player[] players = new Player[3];
-        Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < players.length; i++) {
             System.out.println("Введите имя игрока № " + (i + 1) + " :");
             players[i] = new Player(scanner.nextLine());
         }
         return players;
     }
-
-
 }
