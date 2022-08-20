@@ -40,22 +40,11 @@ public class GuessNumber {
                             break;
                         }
                     }
-                    int countLooses = 0;
-                    for (Player player : players) {
-                        if (player.getTryNumber() >= chances) {
-                            countLooses++;
-                        }
-                        if (countLooses >= players.length) {
-                            System.out.println("У всех игроков закончились попытки! Победителя в раунде нет! " +
-                                    "Загаданное число " + "- " + hiddenNumber);
-                            guessed = false;
-                        }
+                    if (players[players.length - 1].getTryNumber() >= chances) {
+                        System.out.println("У всех игроков закончились попытки! Победителя в раунде нет! " +
+                                "Загаданное число " + "- " + hiddenNumber);
+                        guessed = false;
                     }
-//                    if (players[players.length - 1].getTryNumber() >= chances) {
-//                        System.out.println("У всех игроков закончились попытки! Победителя в раунде нет! " +
-//                                "Загаданное число " + "- " + hiddenNumber);
-//                        guessed = false;
-//                    }
                 } while (guessed);
             outputPlayersTrys();
         }
@@ -79,7 +68,6 @@ public class GuessNumber {
             if (currentPlayer.getChosenNumber() == 0) {
                 System.out.println("Число должно быть в интервале от 1 до 100, попытка не засчитана, ход передан " +
                         "следующему " + "игроку!");
-                currentPlayer.setTryNumber(currentPlayer.getTryNumber() - 1);
             } else {
                 if (checkNumber(currentPlayer.getChosenNumber())) {
                     System.out.println("Победитель раунда - " + currentPlayer.getName() + " / угадано с попытки №" +
