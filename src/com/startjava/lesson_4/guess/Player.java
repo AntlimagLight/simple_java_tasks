@@ -7,7 +7,7 @@ public class Player {
     private String name;
     private int tryNumber;
     private int wins = 0;
-    private int[] chosenNums = new int[10];
+    private int[] chosenNumbers = new int[GuessNumber.getChances()];
 
     public Player(String name) {
         this.name = name;
@@ -17,28 +17,24 @@ public class Player {
         return name;
     }
 
-    public String toString() {
-        return name;
+    public int getChosenNumber() {
+        return chosenNumbers[tryNumber];
     }
 
-    public int getChosenNum() {
-        return chosenNums[tryNumber];
-    }
-
-    public int[] getChosenNums() {
-        return Arrays.copyOf(chosenNums, tryNumber);
+    public int[] getChosenNumbers() {
+        return Arrays.copyOf(chosenNumbers, tryNumber);
     }
 
     public void reset(int round) {
         if (round == 1) {
             wins = 0;
         }
-        Arrays.fill(chosenNums, 0, tryNumber, 0);
+        Arrays.fill(chosenNumbers, 0, tryNumber, 0);
     }
 
-    public void addNum(int chosenNum) {
-        if (chosenNum > 0 && chosenNum <= 100) {
-            chosenNums[tryNumber] = chosenNum;
+    public void addNumber(int chosenNumber) {
+        if (chosenNumber > 0 && chosenNumber <= 100) {
+            chosenNumbers[tryNumber] = chosenNumber;
         }
     }
 
@@ -56,5 +52,9 @@ public class Player {
 
     public void incrementWin(int win) {
         wins = win;
+    }
+
+    public String toString() {
+        return name;
     }
 }
