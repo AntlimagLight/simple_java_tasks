@@ -7,7 +7,7 @@ public class Player {
     private String name;
     private int tryNumber;
     private int wins = 0;
-    private int[] chosenNumbers = new int[GuessNumber.getChances()];
+    private int[] chosenNumbers = new int[GuessNumber.getCountTries()];
 
     public Player(String name) {
         this.name = name;

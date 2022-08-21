@@ -8,13 +8,9 @@ public class GuessNumber {
 
     private int hiddenNumber;
 
-    private static final int chances = 10;
+    private static final int COUNT_TRIES = 10;
 
-    private static final int rounds = 3;
-
-    public static int getChances() {
-        return chances;
-    }
+    private static final int COUNT_ROUNDS = 3;
 
     private Player[] players;
 
@@ -22,10 +18,14 @@ public class GuessNumber {
         this.players = Players;
     }
 
+    public static int getCountTries() {
+        return COUNT_TRIES;
+    }
+
     public void play() {
         System.out.println("Начинается игра между игроками: " + Arrays.toString(players));
-        for (int round = 1; round <= rounds; round++) {
-            System.out.println("\nРАУНД - " + round + "\nЗагадано новое число! У каждого игрока " + chances + " попыток!");
+        for (int round = 1; round <= COUNT_ROUNDS; round++) {
+            System.out.println("\nРАУНД - " + round + "\nЗагадано новое число! У каждого игрока " + COUNT_TRIES + " попыток!");
             hiddenNumber = (int) (Math.random() * 100) + 1;
             for (Player player : players) {
                 player.reset(round);
@@ -33,19 +33,19 @@ public class GuessNumber {
             }
             castLots();
             boolean guessed = true;
-                do {
-                    for (Player player : players) {
-                        if (makeTurn(player)) {
-                            guessed = false;
-                            break;
-                        }
-                    }
-                    if (players[players.length - 1].getTryNumber() >= chances) {
-                        System.out.println("У всех игроков закончились попытки! Победителя в раунде нет! " +
-                                "Загаданное число " + "- " + hiddenNumber);
+            do {
+                for (Player player : players) {
+                    if (makeTurn(player)) {
                         guessed = false;
+                        break;
                     }
-                } while (guessed);
+                }
+                if (players[players.length - 1].getTryNumber() >= COUNT_TRIES) {
+                    System.out.println("У всех игроков закончились попытки! Победителя в раунде нет! " +
+                            "Загаданное число " + "- " + hiddenNumber);
+                    guessed = false;
+                }
+            } while (guessed);
             outputPlayersTrys();
         }
         congratsWinners();
@@ -63,21 +63,19 @@ public class GuessNumber {
     }
 
     private boolean makeTurn(Player currentPlayer) {
-        if (currentPlayer.getTryNumber() < chances) {
+        if (currentPlayer.getTryNumber() < COUNT_TRIES) {
             currentPlayer.addNumber(choseNumber(currentPlayer));
+            currentPlayer.setTryNumber(currentPlayer.getTryNumber() + 1);
             if (currentPlayer.getChosenNumber() == 0) {
                 System.out.println("Число должно быть в интервале от 1 до 100, попытка не засчитана, ход передан " +
                         "следующему " + "игроку!");
-            } else {
-                if (checkNumber(currentPlayer.getChosenNumber())) {
-                    System.out.println("Победитель раунда - " + currentPlayer.getName() + " / угадано с попытки №" +
-                            (1 + currentPlayer.getTryNumber()));
-                    currentPlayer.incrementWin(currentPlayer.getWins() + 1);
-                    return true;
-                }
+            } else if (checkNumber(currentPlayer.getChosenNumber())) {
+                System.out.println("Победитель раунда - " + currentPlayer.getName() + " / угадано с попытки №" +
+                        (1 + currentPlayer.getTryNumber()));
+                currentPlayer.incrementWin(currentPlayer.getWins() + 1);
+                return true;
             }
-            currentPlayer.setTryNumber(currentPlayer.getTryNumber() + 1);
-            System.out.println ("У " + currentPlayer.getName() + " осталось " + (chances - currentPlayer.getTryNumber()) +
+            System.out.println ("У " + currentPlayer.getName() + " осталось " + (COUNT_TRIES - currentPlayer.getTryNumber()) +
                     " попыток");
             return false;
         }
@@ -111,10 +109,10 @@ public class GuessNumber {
 
     private void congratsWinners() {
         int winScore = -1;
-        for (Player value : players) {
-            System.out.println(value.getName() + " победил в " + value.getWins() + " раундах ");
-            if (value.getWins() > winScore) {
-                winScore = value.getWins();
+        for (Player player : players) {
+            System.out.println(player.getName() + " победил в " + player.getWins() + " раундах ");
+            if (player.getWins() > winScore) {
+                winScore = player.getWins();
             }
         }
         if (checkDraw()) {
