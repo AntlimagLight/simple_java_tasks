@@ -6,5 +6,5 @@ SELECT * FROM jaegers WHERE launch = (SELECT MIN(launch) FROM jaegers);
 SELECT * FROM jaegers WHERE kaijukill = (SELECT MIN(kaijukill) FROM jaegers) OR
     kaijukill = (SELECT MAX(kaijukill) FROM jaegers);
 SELECT AVG(weight) FROM jaegers;
-UPDATE jaegers SET kaijukill = kaijukill+1 WHERE status != 'Destroyed';
+UPDATE jaegers SET kaijukill = kaijukill + 1 WHERE status != 'Destroyed';
 DELETE FROM jaegers WHERE status = 'Destroyed';
